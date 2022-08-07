@@ -1,0 +1,14 @@
+{
+"firstName":"Khan",
+"lastName":"Nguyen",
+"email":"khan@gmail.com",
+"gender":"Male",
+"mobile":"0909362726",
+"dateOfBirth":"01 Jan 2000",
+"subject":"Maths",
+"hobbies":"Music",
+"picture":"Path",
+"curentAddress":"499 LVS",
+"state":"NCR",
+"city":"Delhi"
+}

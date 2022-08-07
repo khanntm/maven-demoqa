@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Sauce Lab">
+
+<listeners>
+	<listener class-name="commons.MethodListener" />
+ <listener class-name="reportConfig.ReportNGListener" />  
+	<!--	<listener class-name="reportConfig.ExtentTestListener" /> -->
+	<listener class-name="org.uncommons.reportng.HTMLReporter" />
+	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+</listeners>
+
+<parameter name= "url" value="https://demoqa.com" />
+
+  <test name="Run on CHROME">
+  	<parameter name="browser" value="CHROME" > </parameter>
+    <classes>
+    <!--  Trigger Common 01 run first -->
+         <class name="com.demoqa.register.Register_Student"/>
+       </classes>
+  </test>
+</suite> 
+
+
