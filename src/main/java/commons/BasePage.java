@@ -587,7 +587,7 @@ public class BasePage {
 	
 	public void checkToCheckboxbyJSByLabel(WebDriver driver, String locatorType, String labelCheckbox) {
 		waitForElementClickable(driver, FormPageUI.HOBBIES_CHECKBOX_BY_ID, labelCheckbox);
-		//checkToCheckboxbyJS(driver, FormPageUI.HOBBIES_CHECKBOX_BY_ID, labelCheckbox);
+		checkToCheckboxbyJS(driver, FormPageUI.HOBBIES_CHECKBOX_BY_ID, labelCheckbox);
 	}
 	
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;

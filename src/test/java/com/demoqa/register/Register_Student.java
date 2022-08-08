@@ -57,7 +57,7 @@ public class Register_Student extends BaseTest{
 	 //formPage.inputToEmailTextbox(studentData.getEmail());
 	 
 	 log.info("Register_03 - Step 06: Select 'Gender' option value");
-	 //formPage.clickToCustomeRadioByLable(driver, "Male", studentData.getGender());
+	 formPage.clickToCustomeRadioByLable(driver, "Male", studentData.getGender());
 	 	 
 	 log.info("Register_03 - Step 07: Enter valid info into 'Mobile' value");
 	 //formPage.inputToMobileTextbox(studentData.getMobile());
