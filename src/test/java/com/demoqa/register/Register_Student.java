@@ -48,29 +48,29 @@ public class Register_Student extends BaseTest{
 	 formPage.clickToPracticeFormLink();
 	 
 	 log.info("Register_03 - Step 03: Enter valid info to 'First Name' textbox");
-	 formPage.inputToFirstNameTextbox(studentData.getFirstName());
+	 //formPage.inputToFirstNameTextbox(studentData.getFirstName());
 	 
 	 log.info("Register_03 - Step 04: Enter valid info to 'Last Name' textbox");
-	 formPage.inputToLastNameTextbox(studentData.getLastName());
+	 //formPage.inputToLastNameTextbox(studentData.getLastName());
 	 
 	 log.info("Register_03 - Step 05: Enter valid info to 'Email' textbox");
-	 formPage.inputToEmailTextbox(studentData.getEmail());
+	 //formPage.inputToEmailTextbox(studentData.getEmail());
 	 
 	 log.info("Register_03 - Step 06: Select 'Gender' option value");
-	 //formPage.clickToCustomeRadioByLable(driver, studentData.getGender()); - failed
-	 //formPage.clickToGenderRadioButton(); - failed
+	 //formPage.clickToCustomeRadioByLable(driver, "Male", studentData.getGender());
 	 	 
 	 log.info("Register_03 - Step 07: Enter valid info into 'Mobile' value");
-	 formPage.inputToMobileTextbox(studentData.getMobile());
+	 //formPage.inputToMobileTextbox(studentData.getMobile());
 
 	 log.info("Register_03 - Step 08: Enter valid info into 'Date Of Birth' value");
 	 //formPage.inputToDOBTextbox(studentData.getDateOfBirth());
 	 
 	 log.info("Register_03 - Step 09: Select a 'Subject' value");
-	 formPage.selectSubjectDropdownValue(studentData.getSubject());
+	 //formPage.selectSubjectDropdownValue(studentData.getSubject());
 	 
 	 log.info("Register_03 - Step 10: Select 'Hobbies' checkbox value");
-	 formPage.selectHobbiesCheckboxValue(studentData.getHobbies());
+	 //formPage.selectHobbiesCheckboxValue(studentData.getHobbies());
+	 formPage.checkToCheckboxbyJSByLabel(driver, "Music", studentData.getHobbies());
 	 
 	 log.info("Register_03 - Step 11: Upload a picture of student");
 	 formPage.uploadPicture(studentData.getPicture());

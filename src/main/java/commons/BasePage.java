@@ -442,8 +442,7 @@ public class BasePage {
 	
 	public void clickToElementByJS(WebDriver driver, String locatorType, String...dynamicValues) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-		jsExecutor.executeScript("arguments[0].click();", getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)
-				));
+		jsExecutor.executeScript("arguments[0].click();", getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
 	}
 	
 	public void scrollToElementOnTop(WebDriver driver, String locatorType) {
@@ -570,12 +569,26 @@ public class BasePage {
 	 * @param radioLabelName
 	 * @author Khan Nguyen
 	 */
-	public void clickToCustomeRadioByLable(WebDriver driver, String radioLabelName) {
+	public void clickToCustomeRadioByLable(WebDriver driver, String locatorType, String radioLabelName) {
 		waitForElementClickable(driver, FormPageUI.GENDER_RADIO_BY_VALUE, radioLabelName);
 		clickToElementByJS(driver, FormPageUI.GENDER_RADIO_BY_VALUE, radioLabelName);
 	}
 	
+	public void checkToCheckboxbyJS(WebDriver driver, String locatorType) {
+		//WebElement element = driver.findElement(by);
+		WebElement element = getWebElement(driver,locatorType);
+		if (!element.isSelected()) {
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			jsExecutor.executeScript("arguments[0].click();", element);
+			sleepInSecond(2);	
+		}
+	}
+
 	
+	public void checkToCheckboxbyJSByLabel(WebDriver driver, String locatorType, String labelCheckbox) {
+		waitForElementClickable(driver, FormPageUI.HOBBIES_CHECKBOX_BY_ID, labelCheckbox);
+		//checkToCheckboxbyJS(driver, FormPageUI.HOBBIES_CHECKBOX_BY_ID, labelCheckbox);
+	}
 	
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
 	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;

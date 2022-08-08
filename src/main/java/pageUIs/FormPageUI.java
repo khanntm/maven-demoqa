@@ -6,12 +6,12 @@ public class FormPageUI {
 	public static final String  LAST_NAME_TEXTBOX = "xpath=//input[@id='lastName']";
 	public static final String  EMAIL_TEXTBOX = "xpath=//input[@id='userEmail']";
 	
-	public static final String  GENDER_RADIO_BY_VALUE = "xpath=//label[text()='Male']/preceding-sibling::input";
+	public static final String  GENDER_RADIO_BY_VALUE = "xpath=//label[text()='%s']/preceding-sibling::input";
 	public static final String  MOBILE_TEXTBOX = "xpath=//div[@id='userNumber-wrapper']//input";
-	public static final String  DOB_TEXTBOX = "xpath=//input[@id='dateOfBirthInput']";
+	public static final String  DOB_TEXTBOX = "xpath=//div[@id='dateOfBirth-wrapper']//input";
 	public static final String  SUBJECT_TEXTBOX = "xpath=//input[@id='subjectsInput']";
 	public static final String  LIST_SUBJECT_DROPDOWN = "xpath=//div[@class='subjects-auto-complete__menu-list subjects-auto-complete__menu-list--is-multi css-11unzgr']/div";
-	public static final String  HOBBIES_CHECKBOX_BY_ID = "xpath=//label[text()='Sports']/parent::div/input";
+	public static final String  HOBBIES_CHECKBOX_BY_ID = "xpath=//label[text()='%s']/parent::div/input";
 	public static final String  PICTURE_PATH = "xpath=//input[@id='uploadPicture']";
 	public static final String  CURRENT_ADDRESS_TEXTAREA = "xpath=//textarea[@id='currentAddress']";
 	

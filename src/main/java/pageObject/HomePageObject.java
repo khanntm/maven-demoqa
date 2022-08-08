@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import pageUIs.HomePageUI;
-import pageUIs.saucelab.LoginPageUI;
 
 public class HomePageObject extends BasePage{
  WebDriver driver;
