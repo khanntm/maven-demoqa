@@ -3,6 +3,7 @@ package pageObject;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import pageUIs.FormPageUI;
 import pageUIs.HomePageUI;
 
 public class HomePageObject extends BasePage{
@@ -14,6 +15,7 @@ public class HomePageObject extends BasePage{
 
 	public FormPageObject clickToFormLink() {
 		waitForElementVisible(driver, HomePageUI.FORM_LINK);
+		scrollToElementOnDown(driver, HomePageUI.FORM_LINK);
 		clickToElement(driver, HomePageUI.FORM_LINK);
 		return pageGenerator.getLoginPage(driver);
 	}

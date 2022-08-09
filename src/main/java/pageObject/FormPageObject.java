@@ -26,6 +26,7 @@ public class FormPageObject extends BasePage{
 
 	public void clickToPracticeFormLink() {
 		waitForElementClickable(driver, FormPageUI.PRACTICE_FORM_LINK);
+		scrollToElementOnDown(driver, FormPageUI.PRACTICE_FORM_LINK);
 		clickToElement(driver, FormPageUI.PRACTICE_FORM_LINK);
 		
 	}
@@ -95,14 +96,9 @@ public class FormPageObject extends BasePage{
 	}
 
 
-	public void uploadPicture(String picture) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void inputToCurrentAddressTestArea(String curentAddress) {
-		// TODO Auto-generated method stub
-		
+		waitForElementVisible(driver, FormPageUI.CURRENT_ADDRESS_TEXTAREA);
+		sendkeyToElement(driver, FormPageUI.CURRENT_ADDRESS_TEXTAREA, curentAddress);
 	}
 
 	public void selectStateDropdown(String state) {
@@ -116,7 +112,7 @@ public class FormPageObject extends BasePage{
 	}
 
 	public void clickToSubmitButton() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

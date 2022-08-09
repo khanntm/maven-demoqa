@@ -11,8 +11,12 @@ public class FormPageUI {
 	public static final String  DOB_TEXTBOX = "xpath=//div[@id='dateOfBirth-wrapper']//input";
 	public static final String  SUBJECT_TEXTBOX = "xpath=//input[@id='subjectsInput']";
 	public static final String  LIST_SUBJECT_DROPDOWN = "xpath=//div[@class='subjects-auto-complete__menu-list subjects-auto-complete__menu-list--is-multi css-11unzgr']/div";
-	public static final String  HOBBIES_CHECKBOX_BY_ID = "xpath=//label[text()='%s']/parent::div/input";
+	
+	public static final String  HOBBIES_CHECKBOX_BY_TEXT = "xpath=//label[text()='%s']/parent::div/input";
+	
 	public static final String  PICTURE_PATH = "xpath=//input[@id='uploadPicture']";
+	public static final String UPLOAD_FILE = "xpath=//input[@type='file']";
+	
 	public static final String  CURRENT_ADDRESS_TEXTAREA = "xpath=//textarea[@id='currentAddress']";
 	
 	public static final String  STATE_TEXTBOX = "xpath=//div[@id='state']//input";

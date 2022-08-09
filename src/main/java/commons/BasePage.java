@@ -165,6 +165,9 @@ public class BasePage {
 		return driver.findElement(getByLocator(locatorType));
 	}
 	
+
+	
+	
 	public List<WebElement> getListWebElement(WebDriver driver, String locatorType) {
 		return driver.findElements(getByLocator(locatorType));
 	}
@@ -559,8 +562,7 @@ public class BasePage {
 	
 	
 	public void uploadImage(WebDriver driver, String filePath) {
-		//Dung ham nay vi ko fai la textbox
-		//getWebElement(driver, BasePageUI.UPLOAD_FILE).sendKeys(filePath);
+		getWebElement(driver, BasePageUI.UPLOAD_FILE).sendKeys(filePath);
 	}
 	
 	/**
@@ -574,8 +576,8 @@ public class BasePage {
 		clickToElementByJS(driver, FormPageUI.GENDER_RADIO_BY_VALUE, radioLabelName);
 	}
 	
-	public void checkToCheckboxbyJS(WebDriver driver, String locatorType) {
-		//WebElement element = driver.findElement(by);
+	public void checkToCheckboxbyJS(WebDriver driver, String locatorType, String labelCheckbox) {
+		locatorType = String.format(locatorType, labelCheckbox);
 		WebElement element = getWebElement(driver,locatorType);
 		if (!element.isSelected()) {
 			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
@@ -586,8 +588,8 @@ public class BasePage {
 
 	
 	public void checkToCheckboxbyJSByLabel(WebDriver driver, String locatorType, String labelCheckbox) {
-		waitForElementClickable(driver, FormPageUI.HOBBIES_CHECKBOX_BY_ID, labelCheckbox);
-		checkToCheckboxbyJS(driver, FormPageUI.HOBBIES_CHECKBOX_BY_ID, labelCheckbox);
+		waitForElementClickable(driver, FormPageUI.HOBBIES_CHECKBOX_BY_TEXT, labelCheckbox);
+		checkToCheckboxbyJS(driver, FormPageUI.HOBBIES_CHECKBOX_BY_TEXT, labelCheckbox);
 	}
 	
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
