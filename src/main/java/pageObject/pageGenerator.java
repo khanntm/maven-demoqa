@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class pageGenerator {
 	
-	public static FormPageObject getLoginPage(WebDriver driver) {
+	public static FormPageObject getFormPage(WebDriver driver) {
 		return new FormPageObject(driver);
 	}
 	

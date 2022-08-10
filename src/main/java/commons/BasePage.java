@@ -562,7 +562,7 @@ public class BasePage {
 	
 	
 	public void uploadImage(WebDriver driver, String filePath) {
-		getWebElement(driver, BasePageUI.UPLOAD_FILE).sendKeys(filePath);
+		getWebElement(driver, FormPageUI.UPLOAD_FILE).sendKeys(filePath);
 	}
 	
 	/**

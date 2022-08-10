@@ -9,7 +9,7 @@
 	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
 </listeners>
 
-<parameter name= "url" value="https://demoqa.com" />
+<parameter name= "url" value="https://demoqa.com/automation-practice-form" />
 
   <test name="Run on CHROME">
   	<parameter name="browser" value="CHROME" > </parameter>

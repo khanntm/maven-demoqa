@@ -32,17 +32,15 @@ public class Register_Student extends BaseTest{
 	  public void beforeClass(String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);	 
 		driver.manage().window().maximize();
-		homePage = pageGenerator.getHomePage(driver);
-		
+		//homePage = pageGenerator.getHomePage(driver);
+		formPage = pageGenerator.getFormPage(driver);
 		studentData = StudentData.getStudent();
-		
-
 	 }
 
  @Test
   public void Register_01_All_Fields_Success() {
-	 log.info("Register_01 - Step 01: Click on 'Form' link");
-	 formPage = homePage.clickToFormLink(); 
+	 //log.info("Register_01 - Step 01: Click on 'Form' link");
+	 //formPage = homePage.clickToFormLink(); 
 	 
 	 log.info("Register_02 - Step 02: Click on 'Practice Form' link at left side bar");
 	 formPage.clickToPracticeFormLink();

@@ -17,7 +17,7 @@ public class HomePageObject extends BasePage{
 		waitForElementVisible(driver, HomePageUI.FORM_LINK);
 		scrollToElementOnDown(driver, HomePageUI.FORM_LINK);
 		clickToElement(driver, HomePageUI.FORM_LINK);
-		return pageGenerator.getLoginPage(driver);
+		return pageGenerator.getFormPage(driver);
 	}
 
 
