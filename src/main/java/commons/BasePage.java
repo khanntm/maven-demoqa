@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import pageUIs.BasePageUI;
 //import pageUIs.BasePageUI;
 import pageUIs.FormPageUI;
 
@@ -29,8 +30,6 @@ public class BasePage {
 		return new BasePage();
 	}
 	
-	//Neu run base on (III) thì fai de protected (vì class nào kế thừa thì mới dc dùng), 3 cai private moi dung
-	//Nhung 2 type tren ko run dc. 
 	public void openPageUrl(WebDriver driver, String pageUrl)
 	{
 		driver.get(pageUrl);
@@ -148,7 +147,7 @@ public class BasePage {
 	}
 	
 	public String getDynamicXpath(String locatorType, String...dynamicValues) {
-		System.out.println("Locator Type efore =" + locatorType);
+		System.out.println("Locator Type before =" + locatorType);
 		if (locatorType.startsWith("xpath=") || locatorType.startsWith("Xpath=") || locatorType.startsWith("XPATH=") || locatorType.startsWith("XPath=")) {
 			locatorType = String.format(locatorType, (Object[])	dynamicValues);
 		}
@@ -165,7 +164,6 @@ public class BasePage {
 		return driver.findElement(getByLocator(locatorType));
 	}
 	
-
 	
 	
 	public List<WebElement> getListWebElement(WebDriver driver, String locatorType) {
@@ -282,6 +280,43 @@ public class BasePage {
 							sleepInSecond(1);
 						}
 						 break;
+					}
+				}
+
+	}
+	
+	public void selectItemInEditableDropdown(WebDriver driver, String parentXpath, String childXpath, String expectedItemText) {
+		// CHON ITEM TRONG DROPDOWN
+		
+				// 0. Clear text trong dropdown truoc, neu chọn lại thi ko bi duplicate dữ liệu
+				driver.findElement(By.xpath(parentXpath)).clear();
+				sleepInSecond(1);
+				
+				WebDriverWait explicit = new WebDriverWait(driver, longTimeout);
+				
+				//1. Click vào 1 thẻ dai dien cho the cha xo ra het cac item
+				driver.findElement(By.xpath(parentXpath)).sendKeys(expectedItemText);
+				sleepInSecond(2);
+				
+				//2. Chờ cho các item duoc load len/ hien thi thanh cong & dc present trong vong 30s
+				explicit.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(childXpath)));
+				
+				//3. Lấy hết tat ca cac item ra 
+				List<WebElement> childItems = driver.findElements(By.xpath(childXpath));
+				//chua 19 items
+				System.out.println("Tong so luong item trong dropdown = " + childItems.size());
+				//4. duyet tung item 
+				for (WebElement tempElement : childItems) {
+					System.out.println("Item text = " + tempElement.getText());
+					//5. xem co dung vs cai da chon ko
+					if (tempElement.getText().trim().equals(expectedItemText)) {
+						//6. Neu đúng cái cần chọn thì click vào 
+						tempElement.click();
+						sleepInSecond(3);
+						//7. thoat ra khoi vong lap
+						//8. dropdow đóng nen duyet tiep se bi sai
+						//9. nhung item con lai ko duyet nua
+						break;
 					}
 				}
 
@@ -555,7 +590,6 @@ public class BasePage {
 	}
 	
 	public void waitForElementClickable(WebDriver driver, String locatorType, String... dynamicValues) {
-		System.out.println("Driver at wait for element  = " + driver.toString());
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
 	}
@@ -571,25 +605,19 @@ public class BasePage {
 	 * @param radioLabelName
 	 * @author Khan Nguyen
 	 */
-	public void clickToCustomeRadioByLable(WebDriver driver, String locatorType, String radioLabelName) {
-		waitForElementClickable(driver, FormPageUI.GENDER_RADIO_BY_VALUE, radioLabelName);
-		clickToElementByJS(driver, FormPageUI.GENDER_RADIO_BY_VALUE, radioLabelName);
+	
+	public void clickToRadioByLabel(WebDriver driver, String radioLabelName) {
+		clickToElementByJS(driver, BasePageUI.GENDER_RADIO_BY_VALUE, radioLabelName);
+		
 	}
 	
-	public void checkToCheckboxbyJS(WebDriver driver, String locatorType, String labelCheckbox) {
-		locatorType = String.format(locatorType, labelCheckbox);
-		WebElement element = getWebElement(driver,locatorType);
+	public void checkToCustomCheckboxByLabel(WebDriver driver, String locatorType, String radioLabelName) {
+		WebElement element = getWebElement(driver, getDynamicXpath(BasePageUI.HOBBIES_CHECKBOX_BY_TEXT, radioLabelName));
 		if (!element.isSelected()) {
-			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-			jsExecutor.executeScript("arguments[0].click();", element);
-			sleepInSecond(2);	
+			//jsExecutor.executeScript("arguments[0].click();", element);
+			clickToElementByJS(driver, BasePageUI.HOBBIES_CHECKBOX_BY_TEXT, radioLabelName);
+			
 		}
-	}
-
-	
-	public void checkToCheckboxbyJSByLabel(WebDriver driver, String locatorType, String labelCheckbox) {
-		waitForElementClickable(driver, FormPageUI.HOBBIES_CHECKBOX_BY_TEXT, labelCheckbox);
-		checkToCheckboxbyJS(driver, FormPageUI.HOBBIES_CHECKBOX_BY_TEXT, labelCheckbox);
 	}
 	
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;

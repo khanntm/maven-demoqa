@@ -2,12 +2,16 @@
 "firstName":"Khan",
 "lastName":"Nguyen",
 "email":"khan@gmail.com",
-"gender":"Male",
+"gender":"Female",
 "mobile":"0909362726",
-"dateOfBirth":"08 Jan 2022",
+
+"monthDOB":"July",
+"yearDOB":"1983",
+"dayDOB":"15",
+
 "subject":"Maths",
 "hobbies":"Music",
-"picture":"Path",
+"pictureName":"Avatar.jpg",
 "curentAddress":"499 LVS",
 "state":"NCR",
 "city":"Delhi"

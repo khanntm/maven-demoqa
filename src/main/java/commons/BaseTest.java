@@ -1,5 +1,6 @@
 package commons;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -13,6 +14,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -53,6 +55,18 @@ public class BaseTest {
 			 options.addArguments("window-size=1920*1080");
 			 driver = new ChromeDriver(options);
 		 }
+		 
+		 else if(browserList == BrowserList.CHROME_ADDON) {
+			 WebDriverManager.chromedriver().setup();
+			 ChromeOptions options = new ChromeOptions();
+			 File file = new File(projectPath + "\\extentionFiles\\ChromeAdBlock.zip");
+			 options.addExtensions(file);
+			 DesiredCapabilities capabilities = new DesiredCapabilities();
+			 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			 options.merge(capabilities);
+			 driver = new ChromeDriver(options); 
+		 }
+		 
 		 else if(browserList == BrowserList.OPERA) {
 			 WebDriverManager.operadriver().setup();
 			 driver = new OperaDriver();
@@ -77,7 +91,7 @@ public class BaseTest {
 		String envUrl = null;
 		EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
 		if(environment == EnvironmentList.DEV) {
-			envUrl = "https://demo.nopcommerce.com/";
+			envUrl = "https://demoqa.com/";
 		} else if (environment == EnvironmentList.TESTING) {
 			envUrl = "https://admin-demo.nopcommerce.com/"; 
 		} else if (environment == EnvironmentList.STAGING) {

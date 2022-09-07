@@ -1,6 +1,7 @@
 package pageObject;
 
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -53,39 +54,50 @@ public class FormPageObject extends BasePage{
 		
 	}
 
-	public void inputToDOBTextbox(String dateOfBirth) {
+	/*public void inputToDOBTextbox(String monthSelectValue, String yearSelectValue, String dayLabelValue, String daySelectValue) {
 		waitForElementClickable(driver, FormPageUI.DOB_TEXTBOX);
-		sendkeyToElement(driver, FormPageUI.DOB_TEXTBOX, dateOfBirth);
+		clickToElement(driver, FormPageUI.DOB_TEXTBOX);
 		
-	}
+		waitForElementClickable(driver, FormPageUI.CALENDER_SELECT_MONTH);
+		selectItemInDefaultDropdown(driver, FormPageUI.CALENDER_SELECT_MONTH, monthSelectValue);
+		
+		waitForElementClickable(driver, FormPageUI.CALENDER_SELECT_YEAR);
+		selectItemInDefaultDropdown(driver, FormPageUI.CALENDER_SELECT_YEAR, yearSelectValue);
+		
+		waitForElementClickable(driver, FormPageUI.CALENDER_SELECT_DAY);
+		clickToElement(driver, FormPageUI.CALENDER_SELECT_DAY, dayLabelValue, daySelectValue);
+		
+	} */
+	
+	
 
-	public void selectSubjectDropdownValue(String subject) {
-		//String subject = "Maths";
+	public void selectSubjectDropdownValue(WebDriver driver, String subject) {
 		int count = 0;
 		Actions action;
 		action = new Actions(driver);
+		//WebDriverWait wait = new WebDriverWait(driver, 10);
 		
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		
-		WebElement inputSubName;
-		
-		inputSubName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='subjectsInput']")));
-		inputSubName.sendKeys(subject);
+		//WebElement inputSubName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='subjectsInput']")));
+		waitForElementClickable(driver, FormPageUI.SUBJECT_TEXTBOX);
+		sendkeyToElement(driver, FormPageUI.SUBJECT_TEXTBOX, subject);
+		//inputSubName.sendKeys(subject);
 		
 		sleepInSecond(2);
 		
-		List<WebElement> optionList = driver.findElements(By.xpath("//div[@class='subjects-auto-complete__menu-list subjects-auto-complete__menu-list--is-multi css-11unzgr']/div")); 
+		//List<WebElement> optionList = driver.findElements(By.xpath("//div[@class='subjects-auto-complete__menu-list subjects-auto-complete__menu-list--is-multi css-11unzgr']/div")); 
+		List<WebElement> optionList = getListWebElement(driver, FormPageUI.LIST_SUBJECT_DROPDOWN);
+		
 		for (WebElement webElement : optionList) {
+			
 			String currentOption = webElement.getText();
 			if (currentOption.contains(subject)) {
-				//webElement.click();
 				action.doubleClick(webElement).perform();
 				count++;
 				break;
 			}
 			
 		if(count!=0) {
-			System.out.println(subject + " has been selected in the DD");
+			//System.out.println(subject + " has been selected in the DD");
 		}
 		else {
 			System.out.println("Option you select not exist in DD");
@@ -101,11 +113,6 @@ public class FormPageObject extends BasePage{
 		sendkeyToElement(driver, FormPageUI.CURRENT_ADDRESS_TEXTAREA, curentAddress);
 	}
 
-	public void selectStateDropdown(String state) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void selectCityDropdown(String city) {
 		// TODO Auto-generated method stub
 		
@@ -116,7 +123,34 @@ public class FormPageObject extends BasePage{
 		
 	}
 
-	
+	public void clickToCalendarTextbox() {
+		waitForElementClickable(driver, FormPageUI.DOB_TEXTBOX);
+		clickToElement(driver, FormPageUI.DOB_TEXTBOX);
+		
+	}
+
+	public void selectMonthDOB(WebDriver driver, String monthDOB) {
+		clickToElement(driver, FormPageUI.CALENDER_SELECT_MONTH);
+		selectItemInDefaultDropdown(driver, FormPageUI.CALENDER_SELECT_MONTH, monthDOB);
+	}
+
+	public void selectYearDOB(WebDriver driver, String yearDOB) {
+		clickToElementByJS(driver, FormPageUI.CALENDER_SELECT_YEAR);
+		selectItemInDefaultDropdown(driver, FormPageUI.CALENDER_SELECT_YEAR, yearDOB);
+
+	}
+
+	public void clickToSelectDayDOB(WebDriver driver, String dayDOB) {
+		waitForElementClickable(driver, FormPageUI.CALENDER_SELECT_DAY, dayDOB);
+		clickToElement(driver, FormPageUI.CALENDER_SELECT_DAY, dayDOB);
+	}
+
+	public void selectStateValue(String state) {
+		selectItemInCustomDropdown(driver, FormPageUI.STATE_TEXTBOX, FormPageUI.LIST_STATE_DROPDOWN, state);
+		
+	}
+
+
 
 
 }

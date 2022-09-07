@@ -9,10 +9,10 @@
 	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
 </listeners>
 
-<parameter name= "url" value="https://demoqa.com/automation-practice-form" />
+<parameter name= "url" value="https://demoqa.com" />
 
-  <test name="Run on CHROME">
-  	<parameter name="browser" value="CHROME" > </parameter>
+  <test name="Run on CHROME_ADDON">
+  	<parameter name="browser" value="CHROME_ADDON" > </parameter>
     <classes>
     <!--  Trigger Common 01 run first -->
          <class name="com.demoqa.register.Register_Student"/>

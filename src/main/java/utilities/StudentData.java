@@ -37,8 +37,19 @@ public class StudentData {
 	@JsonProperty("mobile")
 	private String mobile;
 	
-	@JsonProperty("dateOfBirth")
+	@JsonProperty("dateOfBirth_Output")
 	private String dateOfBirth;
+	
+	
+
+	@JsonProperty("monthDOB")
+	private String monthDOB;
+	
+	@JsonProperty("yearDOB")
+	private String yearDOB;
+	
+	@JsonProperty("dayDOB")
+	private String dayDOB;
 	
 	@JsonProperty("subject")
 	private String subject;
@@ -47,7 +58,7 @@ public class StudentData {
 	private String hobbies;
 	
 	@JsonProperty("picture")
-	private String picturePath = GlobalConstants.PROJECT_PATH + "\\uploadFiles\\Avatar.jpg";
+	private String pictureName;
 	
 	@JsonProperty("curentAddress")
 	private String curentAddress;
@@ -90,8 +101,8 @@ public class StudentData {
 		return hobbies;
 	}
 
-	public String getPicture() {
-		return picturePath;
+	public String getPictureName() {
+		return pictureName;
 	}
 
 	public String getCurentAddress() {
@@ -105,7 +116,18 @@ public class StudentData {
 	public String getCity() {
 		return city;
 	}
+	
+	public String getMonthDOB() {
+		return monthDOB;
+	}
 
+	public String getYearDOB() {
+		return yearDOB;
+	}
+
+	public String getDayDOB() {
+		return dayDOB;
+	}
 		
 	}
 	
