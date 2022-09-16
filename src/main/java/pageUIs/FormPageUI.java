@@ -26,14 +26,25 @@ public class FormPageUI {
 	
 	public static final String  CURRENT_ADDRESS_TEXTAREA = "xpath=//textarea[@id='currentAddress']";
 	
-	public static final String  STATE_TEXTBOX = "xpath=//div[@id='state']";
+	//public static final String  STATE_TEXTBOX = "xpath=//div[@id='state']";
+	//public static final String  STATE_OPTION_NCR = "xpath=//div[text()='NCR']";
+	public static final String  STATE_OPTION_BY_TEXT = "xpath=//div[text()='%s']";
+	public static final String  STATE_ICON_DROPDOWN = "xpath=//div[@id='state']";
 	public static final String  LIST_STATE_DROPDOWN = "xpath=//div[contains(@class,'css-26l3qy-menu')]/div/div";
 	
 	
-	public static final String  CITY_TEXTBOX = "xpath=//div[@id='city']//input";
-	public static final String  CITY_BY_NAME = "xpath=//div[@id='city']//div[text()='%s']";
-	public static final String  LIST_CITY_DROPDOWN = "xpath=//div[@id='city']//div[contains(@class,'css-11unzgr')]/div";
+	//public static final String  CITY_TEXTBOX = "xpath=//div[@id='city']//input";
+	//public static final String  CITY_BY_NAME = "xpath=//div[@id='city']//div[text()='%s']";
+	//public static final String  LIST_CITY_DROPDOWN = "xpath=//div[@id='city']//div[contains(@class,'css-11unzgr')]/div";
+	public static final String  CITY_ICON_DROPDOWN = "xpath=//div[@id='city']";
+	//public static final String  CITY_OPTION_DELHI = "xpath=//div[text()='Delhi']";
+	public static final String  CITY_OPTION_BY_TEXT = "xpath=//div[text()='%s']";
 	
 	public static final String  SUBMIT_BUTTON = "xpath=//button[@id='submit']";
+
+	public static final String  CONFIRM_MESSAGE = "xpath=//div[contains(@class,'modal-title')]";
+	
+	public static final String  CLOSE_BUTTON = "xpath=//button[@id='closeLargeModal']";
+
 	}
 

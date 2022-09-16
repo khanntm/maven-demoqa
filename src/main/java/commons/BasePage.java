@@ -620,6 +620,13 @@ public class BasePage {
 		}
 	}
 	
+	public String getValueInTableIDAtColumnNameAndRowIndex(WebDriver driver, String headerName, String rowIndex) {
+		int columnIndex = getElementSize(driver, BasePageUI.TABLE_HEADER_BY_NAME, headerName) + 1;
+		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_AND_ROW_INDEX,rowIndex, String.valueOf(columnIndex));
+		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_AND_ROW_INDEX, rowIndex, String.valueOf(columnIndex));
+	}
+	
+	
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
 	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
 	

@@ -113,13 +113,9 @@ public class FormPageObject extends BasePage{
 		sendkeyToElement(driver, FormPageUI.CURRENT_ADDRESS_TEXTAREA, curentAddress);
 	}
 
-	public void selectCityDropdown(String city) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void clickToSubmitButton() {
-		
+		waitForElementClickable(driver, FormPageUI.SUBMIT_BUTTON);
+		clickToElement(driver, FormPageUI.SUBMIT_BUTTON);
 		
 	}
 
@@ -145,12 +141,38 @@ public class FormPageObject extends BasePage{
 		clickToElement(driver, FormPageUI.CALENDER_SELECT_DAY, dayDOB);
 	}
 
-	public void selectStateValue(String state) {
-		selectItemInCustomDropdown(driver, FormPageUI.STATE_TEXTBOX, FormPageUI.LIST_STATE_DROPDOWN, state);
+	public void selectStateValue(String stateName) {
+		waitForElementClickable(driver, FormPageUI.STATE_ICON_DROPDOWN);
+		clickToElement(driver, FormPageUI.STATE_ICON_DROPDOWN);
+		
+		//waitForElementClickable(driver, FormPageUI.STATE_OPTION_NCR);
+		//clickToElement(driver, FormPageUI.STATE_OPTION_NCR);
+		waitForElementClickable(driver, FormPageUI.STATE_OPTION_BY_TEXT, stateName);
+		clickToElement(driver, FormPageUI.STATE_OPTION_BY_TEXT, stateName);
 		
 	}
 
+	public void selectCityValue(String cityName) {
+		waitForElementClickable(driver, FormPageUI.CITY_ICON_DROPDOWN);
+		clickToElement(driver, FormPageUI.CITY_ICON_DROPDOWN);
+		
+		//waitForElementClickable(driver, FormPageUI.CITY_OPTION_DELHI);
+		//clickToElement(driver, FormPageUI.CITY_OPTION_DELHI);
+		waitForElementClickable(driver, FormPageUI.CITY_OPTION_BY_TEXT, cityName);
+		clickToElement(driver, FormPageUI.STATE_OPTION_BY_TEXT, cityName);
+		
+	}
 
+	public String getSuccessMessage() {
+		waitForElementClickable(driver, FormPageUI.CONFIRM_MESSAGE);
+		return getElementText(driver, FormPageUI.CONFIRM_MESSAGE);
+	}
 
+	public void clickToCloseButton() {
+		waitForElementClickable(driver, FormPageUI.CLOSE_BUTTON);
+		clickToElement(driver, FormPageUI.CLOSE_BUTTON);
+	}
+
+	
 
 }
